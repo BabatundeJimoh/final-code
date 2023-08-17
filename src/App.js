@@ -7,7 +7,4 @@ function App() {
     <>
       <Home />
     </>
-  );
-}
-
-export default App;
+xport default App;
