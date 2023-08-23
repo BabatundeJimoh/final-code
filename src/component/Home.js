@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -25,9 +26,11 @@ function Home() {
                 <b style={{ marginLeft: "40px" }}>New here?</b>
               </h3>
               <p>Create your new account here</p>
-              <Button variant="warning" style={{ marginLeft: "60px" }}>
-                <b>SignUp</b>
-              </Button>
+              <Link to="/login">
+                <Button variant="warning" style={{ marginLeft: "60px" }}>
+                  <b>SignUp</b>
+                </Button>
+              </Link>
             </div>
           </Col>
 

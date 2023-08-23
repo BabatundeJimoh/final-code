@@ -1,10 +1,12 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Home from "./component/Home";
+
+import Routing from "./Routing";
+
 function App() {
   return (
     <>
-      <Home />
+      <Routing />
     </>
   );
 }
