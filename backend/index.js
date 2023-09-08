@@ -8,9 +8,19 @@ const MongoStore = require('connect-mongo')
 const session = require('express-session')
 
 const authRoute = require('./src/routes/auth')
+const connectDatabase = require('./src/config/database')
+connectDatabase()
 
-server.use(express.urlencoded())
+server.use(express.urlencoded({ extended: true }))
 server.use(express.json())
 server.use(cookieParser())
+server.use(session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI
+    })
+}))
 
 server.listen(PORT, () => console.log(`Server is clean & live on Port ${PORT}`))
