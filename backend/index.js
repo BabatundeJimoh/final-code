@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser')
 const MongoStore = require('connect-mongo')
 const session = require('express-session')
 
-const authRoute = require('./src/routes/auth')
+// const authRoute = require('./src/routes/auth')
 const connectDatabase = require('./src/config/database')
 connectDatabase()
 
@@ -22,5 +22,7 @@ server.use(session({
         mongoUrl: process.env.MONGODB_URI
     })
 }))
+
+server.use('/', require('./src/routes/auth'))
 
 server.listen(PORT, () => console.log(`Server is clean & live on Port ${PORT}`))
