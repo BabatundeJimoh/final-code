@@ -6,11 +6,13 @@ const PORT = 3001 || process.env.PORT
 const cookieParser = require('cookie-parser')
 const MongoStore = require('connect-mongo')
 const session = require('express-session')
+const cors = require('cors')
 
 // const authRoute = require('./src/routes/auth')
 const connectDatabase = require('./src/config/database')
 connectDatabase()
 
+server.use(cors())
 server.use(express.urlencoded({ extended: true }))
 server.use(express.json())
 server.use(cookieParser())

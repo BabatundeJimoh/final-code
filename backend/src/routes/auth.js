@@ -20,7 +20,7 @@ const authMiddleware = (request, response, next) => {
     }
 }
 
-router.post('/register', async (request, response) => {
+router.post('/api/register', async (request, response) => {
     try {
         const { username, password, email } = request.body
         const hashedPassword = await bcrypt.hash(password, 10)
@@ -38,7 +38,7 @@ router.post('/register', async (request, response) => {
     }
 })
 
-router.post('/login', async (request, response) => {
+router.post('/api/login', async (request, response) => {
     try {
         const { username, password } = request.body
 
@@ -59,7 +59,7 @@ router.post('/login', async (request, response) => {
         const token = jwt.sign({ userId: user._id}, jwtSecret)
         res.cookie('token', token, { httpOnly: true})
 
-        res.redirect('/')
+        res.redirect('/dashboard')
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: 'Internal Server Error'})
