@@ -12,7 +12,10 @@ const cors = require('cors')
 const connectDatabase = require('./src/config/database')
 connectDatabase()
 
-server.use(cors())
+server.use(cors({
+    credentials: true,
+    origin: 'https://localhost:5173'
+}))
 server.use(express.urlencoded({ extended: true }))
 server.use(express.json())
 server.use(cookieParser())
